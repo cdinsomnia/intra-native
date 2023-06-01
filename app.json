@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "intranative",
+    "slug": "intranative",
+    "version": "1.0.12",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "WEB"],
+    "scheme": "exp",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#111111"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#111111"
+      },
+      "package": "com.insomniacd.intra",
+      "versionCode": 3
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "12d77126-9fd6-413f-92fb-e207c7702321"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/12d77126-9fd6-413f-92fb-e207c7702321"
+    }
+  }
+}
