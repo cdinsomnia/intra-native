@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, Image, ScrollView, ActivityIndicator, TouchableOpacity, ImageBackground } from 'react-native';
+import { SafeAreaView, View, Text, Image, ScrollView, ImageBackground } from 'react-native';
 import Header from '../components/Header';
 import BottomNavigation from '../components/BottomNavigation';
 import ButtonPrimarySmall from '../components/buttons/ButtonPrimarySmall';
-import { clearAccessToken, getAccessToken } from '../components/api/api_token';
-import ButtonSecondary from '../components/buttons/ButtonSecondary';
+import { getAccessToken } from '../components/api/api_token';
 import { useNavigation } from '@react-navigation/native';
 import { useAuthorization } from '../components/api/api_connection';
 import { config } from '../components/api/api_config';
-import * as Icons from "react-native-heroicons/outline";
 
 const HomeScreen = () => {
   const [name, setName] = useState('');
@@ -20,18 +18,21 @@ const HomeScreen = () => {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [nextLevel, setNextLevel] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [currentCursusLevel, setCurrentCursusLevel] = useState(0);
+  const [nextCursusLevel, setNextCursusLevel] = useState(0);
+  const [cursusProgress, setCursusProgress] = useState(0);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const accessToken = await getAccessToken();
-    
+
         const response = await fetch('https://api.intra.42.fr/v2/me', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-    
+
         if (response.ok) {
           const data = await response.json();
           const firstName = data.first_name;
@@ -44,7 +45,9 @@ const HomeScreen = () => {
           setLoading(false);
           setCurrentLevel(data.level);
           setNextLevel(data.level + 1);
-          setProgress(data.cursus_users[0].level);
+          setCurrentCursusLevel(data.cursus_users[0].level); // Aktuelles Cursus-Level
+          setNextCursusLevel(data.cursus_users[0].level + 1); // Nächstes Cursus-Level
+          setCursusProgress(data.cursus_users[0].level); // Cursus-Fortschritt
         } else {
           console.error('Failed to fetch user data:', response.status, response.statusText);
           setLoading(false);
@@ -63,7 +66,7 @@ const HomeScreen = () => {
   const handleLogout = () => {
     logout(); // Logout auslösen
   };
-
+  
   return (
     <SafeAreaView className="flex-1">
       <Header />

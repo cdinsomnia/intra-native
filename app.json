@@ -1,12 +1,17 @@
 {
   "expo": {
-    "name": "intranative",
-    "slug": "intranative",
+    "name": "in42",
+    "slug": "in42",
     "version": "1.0.12",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "owner": "in42",
     "userInterfaceStyle": "dark",
-    "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "WEB"],
+    "permissions": [
+      "ACCESS_FINE_LOCATION",
+      "ACCESS_COARSE_LOCATION",
+      "WEB"
+    ],
     "scheme": "exp",
     "splash": {
       "image": "./assets/splash.png",
@@ -32,7 +37,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "12d77126-9fd6-413f-92fb-e207c7702321"
+        "projectId": "a07ac49f-14a6-4f4a-827c-70fad015f5fe"
       }
     },
     "runtimeVersion": {
